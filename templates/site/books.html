@@ -1,0 +1,15 @@
+{% include 'site/headLayout.html' %}
+<h1>Libros</h1>
+<div class="container__books">
+    {% for book in books %}
+    <div class="books__card">
+        <img src="/img/{{book[2]}}" alt="book">
+        <div>
+            <h4>{{book[1]}}</h4>
+            <p>Descripcion</p>
+        </div>
+        <button href="{{book[3]}}">Descargar</button>
+    </div>
+   {% endfor %}
+</div>
+{% include 'site/footerLayout.html' %}

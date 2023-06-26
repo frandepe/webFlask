@@ -1,0 +1,56 @@
+{% include 'admin/headLayoutAdmin.html' %}
+<div class="container__books--admin">
+    <div>
+        <h3>Datos del libro</h3>
+    </div>
+    <div>
+       <form action="/admin/books/save" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="txtNombre">Nombre</label>
+            <input type="text" id="txtNombre" name="txtNombre" placeholder="Seleccione el nombre">
+        </div>
+        <div>
+            <label for="txtImagen">Imagen</label>
+            <input type="file" id="txtImagen" name="txtImagen" placeholder="Seleccione la imagen">
+        </div>
+        <div>
+            <label for="txtURL">URL Descarga</label>
+            <input type="text" id="txtURL" name="txtURL" placeholder="Escriba la URL de descarga">
+        </div>
+        <button type="submit">Agregar</button>
+       </form>
+    </div>
+   <table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Imagen</th>
+        <th>URL</th>
+        <th>Acciones</th>
+    </tr>
+    <thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{book[0]}}</td>
+                <td>{{book[1]}}</td>
+                <td>
+                    <img width="60" src="/img/{{book[2]}}" alt="books">
+                    {{book[2]}}
+                </td>
+                <td>
+                    <a href="{{book[3]}}">Descarga</a>
+                </td>
+                <td>
+                    <form action="/admin/books/delete" method="post">
+                        <input value="{{book[0]}}" type="hidden" name="txtID" id="txtID">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </thead>
+   </table>
+</div>
+{% include 'admin/footerLayoutAdmin.html' %}

@@ -1,0 +1,7 @@
+{% include 'admin/headLayoutAdmin.html' %}
+    <div>
+        <h1>Bienvenido <strong>{{session["usuario"]}}</strong> al administrador del sitio</h1>
+        <p>Aqui podra administrar los libros del sitio web</p>
+        <a href="/books">Empezar la gestion</a>
+    </div>
+{% include 'admin/footerLayoutAdmin.html' %}
